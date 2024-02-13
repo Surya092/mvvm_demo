@@ -33,21 +33,24 @@ final class HomeViewControllerTest: XCTestCase {
         sut.viewModel.model = model
         let _ = sut.view
         RunLoop.current.run(until: Date())
-        XCTAssertEqual(sut.tableView(sut.homeTableView, cellForRowAt: IndexPath(row: 0, section: 0)).textLabel?.text, model.items[0])
+        let cell = sut.tableView(sut.homeTableView, cellForRowAt: IndexPath(row: 0, section: 0)) as! HomeTableViewCell
+        XCTAssertEqual(cell.cellDataLabel.text, model.items[0])
     }
     
     func test_MiddleCellSetup() {
         sut.viewModel.model = model
         let _ = sut.view
         RunLoop.current.run(until: Date())
-        XCTAssertEqual(sut.tableView(sut.homeTableView, cellForRowAt: IndexPath(row: 1, section: 0)).textLabel?.text, model.items[1])
+        let cell = sut.tableView(sut.homeTableView, cellForRowAt: IndexPath(row: 1, section: 0)) as! HomeTableViewCell
+        XCTAssertEqual(cell.cellDataLabel.text, model.items[1])
     }
     
     func test_BottomCellSetup() {
         sut.viewModel.model = model
         let _ = sut.view
         RunLoop.current.run(until: Date())
-        XCTAssertEqual(sut.tableView(sut.homeTableView, cellForRowAt: IndexPath(row: 2, section: 0)).textLabel?.text, model.items[2])
+        let cell = sut.tableView(sut.homeTableView, cellForRowAt: IndexPath(row: 2, section: 0)) as! HomeTableViewCell
+        XCTAssertEqual(cell.cellDataLabel.text, model.items[2])
     }
 
 }
