@@ -12,6 +12,8 @@
 		8F45FEC72B7B868300793ECB /* LandingPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F45FEC62B7B868300793ECB /* LandingPageModel.swift */; };
 		8F45FEC92B7B869500793ECB /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F45FEC82B7B869400793ECB /* HomeModel.swift */; };
 		8F45FECB2B7B8D0500793ECB /* LandingPageViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F45FECA2B7B8D0500793ECB /* LandingPageViewControllerTest.swift */; };
+		8F45FECF2B7B9E3700793ECB /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F45FECD2B7B9E3600793ECB /* HomeTableViewCell.swift */; };
+		8F45FED02B7B9E3700793ECB /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F45FECE2B7B9E3600793ECB /* HomeTableViewCell.xib */; };
 		8FA165892B763177004123E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA165882B763177004123E4 /* AppDelegate.swift */; };
 		8FA1658B2B763177004123E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA1658A2B763177004123E4 /* SceneDelegate.swift */; };
 		8FA1658D2B763177004123E4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA1658C2B763177004123E4 /* HomeViewController.swift */; };
@@ -47,6 +49,8 @@
 		8F45FEC62B7B868300793ECB /* LandingPageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageModel.swift; sourceTree = "<group>"; };
 		8F45FEC82B7B869400793ECB /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		8F45FECA2B7B8D0500793ECB /* LandingPageViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageViewControllerTest.swift; sourceTree = "<group>"; };
+		8F45FECD2B7B9E3600793ECB /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		8F45FECE2B7B9E3600793ECB /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		8FA165852B763177004123E4 /* mvvmdemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mvvmdemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FA165882B763177004123E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FA1658A2B763177004123E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F45FECC2B7B9E1D00793ECB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8F45FECD2B7B9E3600793ECB /* HomeTableViewCell.swift */,
+				8F45FECE2B7B9E3600793ECB /* HomeTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		8FA1657C2B763177004123E4 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +166,7 @@
 		8FA165B92B7632D4004123E4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8F45FECC2B7B9E1D00793ECB /* Cells */,
 				8FA165BC2B7632F6004123E4 /* Controller */,
 				8FA165BB2B7632E5004123E4 /* Storyboard */,
 			);
@@ -291,6 +305,7 @@
 			files = (
 				8FA165BF2B7634BB004123E4 /* Main.storyboard in Resources */,
 				8FA165952B76317A004123E4 /* LaunchScreen.storyboard in Resources */,
+				8F45FED02B7B9E3700793ECB /* HomeTableViewCell.xib in Resources */,
 				8FA165922B76317A004123E4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +337,7 @@
 				8F45FEC32B7B862200793ECB /* LandingPageViewController.swift in Sources */,
 				8FA165892B763177004123E4 /* AppDelegate.swift in Sources */,
 				8F45FEC72B7B868300793ECB /* LandingPageModel.swift in Sources */,
+				8F45FECF2B7B9E3700793ECB /* HomeTableViewCell.swift in Sources */,
 				8FA1658B2B763177004123E4 /* SceneDelegate.swift in Sources */,
 				8FA165C32B7642F6004123E4 /* HomeViewModel.swift in Sources */,
 			);

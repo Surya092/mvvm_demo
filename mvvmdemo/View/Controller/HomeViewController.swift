@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     // MARK: View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        homeTableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
+        homeTableView.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
         viewModel.delegate = self
         navigationController?.navigationBar.topItem?.title = viewModel.getNavigationTitle()
         viewModel.setDataOnLoad()
@@ -38,9 +38,11 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = homeTableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
-        cell.textLabel?.text = viewModel.getItemTitle(indexPath: indexPath)
+        let viewModel = HomeCellViewModel(model: viewModel, index: indexPath.row)
+        let cell = homeTableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
         cell.selectionStyle = .none
+        cell.viewModel = viewModel
+        cell.setData()
         return cell
     }
 }
@@ -53,10 +55,11 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let label = viewModel.getItemTitle(indexPath: indexPath)
+        let cell = tableView.cellForRow(at: indexPath) as! HomeTableViewCell
+        let dataLabel = cell.viewModel.getCellData()
         let landingPageController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LandingPageViewController") as! LandingPageViewController
-        landingPageController.dataLabel = label
-        landingPageController.pageTitle = label
+        landingPageController.dataLabel = dataLabel
+        landingPageController.pageTitle = dataLabel
         navigationController?.pushViewController(landingPageController, animated: true)
     }
 }

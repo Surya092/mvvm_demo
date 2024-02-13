@@ -28,8 +28,20 @@ class HomeViewModel {
         model.items.count
     }
     
-    func getItemTitle(indexPath: IndexPath) -> String {
-        model.items[indexPath.row]
+}
+
+class HomeCellViewModel {
+    
+    var cellModel: HomeViewModel!
+    var indexData: Int!
+    
+    init(model: HomeViewModel, index: Int) {
+        self.cellModel = model
+        self.indexData = index
+    }
+    
+    func getCellData() -> String {
+        cellModel.model.items[indexData]
     }
     
 }
