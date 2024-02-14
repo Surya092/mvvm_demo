@@ -11,46 +11,58 @@ import XCTest
 final class HomeViewControllerTest: XCTestCase {
     
     var storyboard: UIStoryboard!
-    var model: HomePageModel!
+    var homePageModel: HomePageModel!
     var sut: HomeViewController!
     
     override func setUp() {
         super.setUp()
         storyboard = UIStoryboard(name: "Main", bundle: nil)
-        model = HomePageModel(pageItems: ["Red", "Green", "Blue"], title: "Home Page")
+        homePageModel = HomePageModel(pageItems: ["Red", "Green", "Blue"], title: "Home Page")
         sut = (storyboard.instantiateInitialViewController() as! UINavigationController).viewControllers.first as? HomeViewController
         
     }
     
     func test_navigationTitleSetup() {
-        sut.viewModel.model = model
+        let coordinator = AppCoordinator(navController: UINavigationController.init())
+        let viewModel = HomeViewModel(coordinator: coordinator)
+        viewModel.model = homePageModel
+        sut.viewModel = viewModel
         let _ = sut.view
         RunLoop.current.run(until: Date())
-        XCTAssertEqual(sut.navigationController?.navigationBar.topItem?.title, model.pageTitle)
+        XCTAssertEqual(sut.navigationController?.navigationBar.topItem?.title, homePageModel.pageTitle)
     }
 
     func test_topCellSetup() {
-        sut.viewModel.model = model
+        let coordinator = AppCoordinator(navController: UINavigationController.init())
+        let viewModel = HomeViewModel(coordinator: coordinator)
+        viewModel.model = homePageModel
+        sut.viewModel = viewModel
         let _ = sut.view
         RunLoop.current.run(until: Date())
         let cell = sut.tableView(sut.homeTableView, cellForRowAt: IndexPath(row: 0, section: 0)) as! HomeTableViewCell
-        XCTAssertEqual(cell.cellDataLabel.text, model.items[0])
+        XCTAssertEqual(cell.cellDataLabel.text, homePageModel.items[0])
     }
     
     func test_MiddleCellSetup() {
-        sut.viewModel.model = model
+        let coordinator = AppCoordinator(navController: UINavigationController.init())
+        let viewModel = HomeViewModel(coordinator: coordinator)
+        viewModel.model = homePageModel
+        sut.viewModel = viewModel
         let _ = sut.view
         RunLoop.current.run(until: Date())
         let cell = sut.tableView(sut.homeTableView, cellForRowAt: IndexPath(row: 1, section: 0)) as! HomeTableViewCell
-        XCTAssertEqual(cell.cellDataLabel.text, model.items[1])
+        XCTAssertEqual(cell.cellDataLabel.text, homePageModel.items[1])
     }
     
     func test_BottomCellSetup() {
-        sut.viewModel.model = model
+        let coordinator = AppCoordinator(navController: UINavigationController.init())
+        let viewModel = HomeViewModel(coordinator: coordinator)
+        viewModel.model = homePageModel
+        sut.viewModel = viewModel
         let _ = sut.view
         RunLoop.current.run(until: Date())
         let cell = sut.tableView(sut.homeTableView, cellForRowAt: IndexPath(row: 2, section: 0)) as! HomeTableViewCell
-        XCTAssertEqual(cell.cellDataLabel.text, model.items[2])
+        XCTAssertEqual(cell.cellDataLabel.text, homePageModel.items[2])
     }
 
 }

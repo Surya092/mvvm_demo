@@ -15,6 +15,11 @@ class HomeViewModel {
     
     var model = HomePageModel(pageItems: ["Red", "Green", "Blue"], title: "Home Page")
     var delegate: HomeViewModelProtocol!
+    weak var coordinator: AppCoordinator!
+    
+    init(coordinator: AppCoordinator!) {
+        self.coordinator = coordinator
+    }
     
     func setDataOnLoad() {
         self.delegate.updateTableView()
@@ -34,10 +39,12 @@ class HomeCellViewModel {
     
     var cellModel: HomeViewModel!
     var indexData: Int!
+    weak var coordinator: AppCoordinator!
     
-    init(model: HomeViewModel, index: Int) {
+    init(model: HomeViewModel, index: Int, appCoordinator: AppCoordinator) {
         self.cellModel = model
         self.indexData = index
+        self.coordinator = appCoordinator
     }
     
     func getCellData() -> String {

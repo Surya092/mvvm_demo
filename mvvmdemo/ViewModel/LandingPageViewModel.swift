@@ -14,6 +14,7 @@ protocol LandingPageViewModelProtocol {
 class LandingPageViewModel {
     
     var model: LandingPageModel!
+    weak var coordinator : AppCoordinator!
     var delegate: LandingPageViewModelProtocol!
     
     init(label: String, title: String) {

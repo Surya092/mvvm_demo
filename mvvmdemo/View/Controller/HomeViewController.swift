@@ -10,7 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var homeTableView: UITableView!
-    var viewModel = HomeViewModel()
+    var viewModel: HomeViewModel!
     
     // MARK: View Cycle
     override func viewDidLoad() {
@@ -38,10 +38,9 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let viewModel = HomeCellViewModel(model: viewModel, index: indexPath.row)
         let cell = homeTableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
         cell.selectionStyle = .none
-        cell.viewModel = viewModel
+        cell.viewModel = HomeCellViewModel(model: viewModel, index: indexPath.row, appCoordinator: self.viewModel.coordinator)
         cell.setData()
         return cell
     }
@@ -56,11 +55,7 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! HomeTableViewCell
-        let dataLabel = cell.viewModel.getCellData()
-        let landingPageController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LandingPageViewController") as! LandingPageViewController
-        landingPageController.dataLabel = dataLabel
-        landingPageController.pageTitle = dataLabel
-        navigationController?.pushViewController(landingPageController, animated: true)
+        cell.viewModel.coordinator.goToLandingPage(dataLabel: cell.viewModel.getCellData(), pageTitle: cell.viewModel.getCellData())
     }
 }
 

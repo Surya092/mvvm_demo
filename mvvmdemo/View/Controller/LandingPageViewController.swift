@@ -13,14 +13,13 @@ class LandingPageViewController: UIViewController {
     
     var dataLabel: String = ""
     var pageTitle: String = ""
-    var presenter: LandingPageViewModel!
+    var viewModel: LandingPageViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = LandingPageViewModel(label: dataLabel, title: pageTitle)
-        presenter.delegate = self
-        navigationController?.navigationBar.topItem?.title = presenter.getNavigationTitle()
-        self.pageLabel.text = presenter.getPageLabel()
+        viewModel.delegate = self
+        navigationController?.navigationBar.topItem?.title = viewModel.getNavigationTitle()
+        self.pageLabel.text = viewModel.getPageLabel()
     }
 
 }
