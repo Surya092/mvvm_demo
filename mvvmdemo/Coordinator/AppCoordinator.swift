@@ -9,16 +9,21 @@ import Foundation
 import UIKit
 
 protocol Coordinator {
+    var parentCoordinator: Coordinator? { get set }
+    var children: [Coordinator] { get set }
     var navigationController : UINavigationController { get set }
     func start()
 }
 
 class AppCoordinator: Coordinator {
+    var parentCoordinator: Coordinator?
+    var children: [Coordinator]
     var navigationController: UINavigationController
     let storyboard = UIStoryboard.init(name: "Main", bundle: .main)
     
     init(navController: UINavigationController) {
         self.navigationController = navController
+        self.children = []
         start()
     }
     
